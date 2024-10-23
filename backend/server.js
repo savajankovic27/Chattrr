@@ -1,19 +1,24 @@
 import express from "express";
 import dotenv from "dotenv";
-import connectToMongoDB from "../db/connectToMongoDB.js";
 
+import connectToMongoDB from "../db/connectToMongoDB.js";
 import authRoutes from "./routes/auth.routes.js";
+
 const app = express();
+const port = process.env.port || 5001;
+
 
 dotenv.config();
-const port = process.env.port || 5001;
-// WHENEVER YOU UPDATE THIS FILE, YOU NEED TO TERMINATE THE PROCESS AND THEN RUN IT AGAIN
-// Shortcut: Control + C
-app.get("/", (req,res) => {
-    res.send("Hello World!!")
-})
+
+app.use(express.json()); // to parse the incoming requests with JSON payloads (from req.body)
 
 app.use("/api/auth",authRoutes);
+
+// app.get("/", (req,res) => {
+//     res.send("Hello World!!")
+// })
+
+
 
 // to edit
 app.listen(5001, () => {
