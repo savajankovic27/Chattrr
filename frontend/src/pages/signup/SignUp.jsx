@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import useSignup from '../../hooks/useSignup';
 import signup from '../../hooks/useSignup';
 
+
 const SignUp = () => {
     // Obtaining the user input as a constructor
     const [inputs,setInputs] = useState({
@@ -16,14 +17,16 @@ const SignUp = () => {
       gender: ""
     });
 
+    const {loading,signup} = useSignup()
+
     const handleCheckboxChange = (gender) => {
-      setInputs({...inputs,gender})
+      setInputs({...inputs,gender});
     };
 
     const handleSubmit = async (e) => {
       e.preventDefault();
+      console.log(inputs)
       await signup(inputs);
-      console.log(inputs);
     };
 
     return (
