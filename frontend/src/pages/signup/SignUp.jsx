@@ -26,6 +26,7 @@ const SignUp = () => {
     const handleSubmit = async (e) => {
       e.preventDefault();
       console.log(inputs);
+      // one by one parsed into the array, initially had to debug an error where everything was passed into the fullName for some reason. 
       await signup(inputs.fullName, inputs.username, inputs.password, inputs.confirmPassword, inputs.gender);
 
     };
