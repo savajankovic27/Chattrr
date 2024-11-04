@@ -36,17 +36,17 @@ export default useSignup;
 function handleInputErrors({fullName,username,password,confirmPassword,gender}) {
   if (!fullName || !username || !password || !confirmPassword || !gender) {
     toast.error('Please fill in all fields man');
-    return true;
+    return false;
   }
 
   if(password !== confirmPassword){
     toast.error('Passwords do not match');
-    return true;
+    return false;
   }
 
   if(password.length < 6){
     toast.error('Password must be at least 6 characters');
-    return true;
+    return false;
   }
 
   return true;
