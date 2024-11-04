@@ -26,7 +26,8 @@ const SignUp = () => {
     const handleSubmit = async (e) => {
       e.preventDefault();
       console.log(inputs);
-      await signup(inputs);
+      await signup(inputs.fullName, inputs.username, inputs.password, inputs.confirmPassword, inputs.gender);
+
     };
 
     return (
@@ -66,7 +67,7 @@ const SignUp = () => {
                 <input type="text" placeholder = 'Enter Password' className = 'input input-bordered input-primary w-full max-w-xs' 
                   value = {inputs.password}
                   // will only update the... you guessed it, password that the user inputs for the database
-                  onChange = {(e) => setInputs({...inputs,password: e.target.value})}
+                  onChange = {(e) => setInputs({...inputs, password: e.target.value})}
                 />
             </div>
 
