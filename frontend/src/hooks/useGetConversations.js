@@ -28,6 +28,6 @@ const useGetConversations = () => {
 
     return {loading, conversations};
 }
-// conversation logs are working and are showing in the browser consule. 
+// conversation logs are working and are showing in the browser console. 
 
 export default useGetConversations;
