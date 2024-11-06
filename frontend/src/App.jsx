@@ -22,5 +22,7 @@ function App() {
   )
 }
 // if the user is authenticated, takes to the next supported page. If not, it stays there. 
+// zustand also being used in the project, implemented. 
+
 
 export default App;
