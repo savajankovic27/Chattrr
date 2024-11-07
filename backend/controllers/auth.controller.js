@@ -25,6 +25,8 @@ export const signup = async (req, res) => {
 		const boyProfilePic = `https://ui-avatars.com/api/?name=${username}`;
 		const girlProfilePic = `https://ui-avatars.com/api/?name=${username}`;
 
+		
+
 		const newUser = new User({
 			fullName,
 			username,
