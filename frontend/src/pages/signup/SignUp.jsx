@@ -41,7 +41,7 @@ const SignUp = () => {
           <form onSubmit = {handleSubmit}>
             <div>
               <label className='label p-2'>
-                <span className='text-base label-text'>Full Name</span>
+                <span className='text-base label-text text-black'>Full Name</span>
               </label>
               <input type="text" placeholder = 'John Doe' className = 'input input-bordered input-primary w-full max-w-xs' 
                 value={inputs.fullName}
@@ -52,7 +52,7 @@ const SignUp = () => {
 
             <div>
             <label className='label p-2'>
-                <span className='text-base label-text'>Username</span>
+                <span className='text-base label-text text-black'>Username</span>
                 </label>
                 <input type="text" placeholder = 'johndoe' className = 'input input-bordered input-primary w-full max-w-xs' 
                   value = {inputs.username}
@@ -63,9 +63,9 @@ const SignUp = () => {
 
             <div>
                 <label className='label'>
-                    <span className = 'text-base label-text'>Password</span>
+                    <span className = 'text-base label-text text-black'>Password</span>
                 </label>
-                <input type="text" placeholder = 'Enter Password' className = 'input input-bordered input-primary w-full max-w-xs' 
+                <input type='password' placeholder='Enter Password' className='input-bordered input-primary w-full input max-w-xs' 
                   value = {inputs.password}
                   // will only update the... you guessed it, password that the user inputs for the database
                   onChange = {(e) => setInputs({...inputs, password: e.target.value})}
@@ -74,9 +74,9 @@ const SignUp = () => {
 
             <div>
                 <label className='label'>
-                    <span className = 'text-base label-text'>Confirm Password</span>
+                    <span className = 'text-base label-text text-black'>Confirm Password</span>
                 </label>
-                <input type="text" placeholder = 'Confirm Password' className = 'input input-bordered input-primary w-full max-w-xs' 
+                <input type="password" placeholder = 'Confirm Password' className='input-bordered input-primary w-full input max-w-xs' 
                   value = {inputs.confirmPassword}
                   // confirming password
                   onChange = {(e) => setInputs({...inputs,confirmPassword: e.target.value})}
