@@ -8,7 +8,7 @@ const Message = ({ message }) => {
 	const fromMe = message.senderId === authUser._id;
 	const formattedTime = extractTime(message.createdAt);
 	const chatClassName = fromMe ? "chat-end" : "chat-start";
-	const profilePic = fromMe ? authUser.profilePic : selectedConversation?.profilePic;
+	const profilePic = fromMe ? `https://ui-avatars.com/api/?name=${authUser.fullName}` : selectedConversation?.profilePic;
 	const bubbleBgColor = fromMe ? "bg-blue-500" : "";
 
 	const shakeClass = message.shouldShake ? "shake" : "";
@@ -19,7 +19,7 @@ const Message = ({ message }) => {
 				<div className='w-10 rounded-full'>
                     <img
                         alt='Tailwind CSS chat bubble component'
-                        src={`https://ui-avatars.com/api/?name=${authUser.fullName}`}
+                        src={profilePic}
                     />
 				</div>
 			</div>

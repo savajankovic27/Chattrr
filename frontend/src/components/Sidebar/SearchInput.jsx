@@ -3,6 +3,9 @@ import { FaSearch } from "react-icons/fa";
 
 
 const SearchInput = () => {
+  const [search, setSearch] = useState("");
+
+  
   return (
     // input within the button will be next to each other
     <form className = 'flex items-center gap-2'> 
