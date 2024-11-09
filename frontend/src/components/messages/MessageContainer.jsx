@@ -12,7 +12,7 @@ const MessageContainer = () => {
 	useEffect(()=>{
 		// resets the function, unmounting
 		return () => setSelectedConversation(null);
-	  }, [setSelectedConversation]);
+	}, [setSelectedConversation]);
 
 	return (
 		<div className='md:min-w-[450px] flex flex-col'>

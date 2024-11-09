@@ -1,43 +1,37 @@
-import React from 'react'
-import Message from './Message'
-import useGetMessages from '../../hooks/useGetMessages'
-import MessageSkeleton from '../skeletons/MessageSkeleton'
-import MessageContainer from './MessageContainer'
-import useConversation from '../../zustand/useConversation'
+import { useEffect, useRef } from "react";
+import useGetMessages from "../../hooks/useGetMessages";
+import MessageSkeleton from "../skeletons/MessageSkeleton";
+import Message from "./Message";
+import useListenMessages from "../../hooks/useListenMessages";
 import { AuthContext } from '../../context/AuthContext'
-import { useRef, useEffect } from 'react'
 
 
 const Messages = () => {
-  const lastMessageRef = useRef();
-  const { selectedConversation, setSelectedConversation } = useConversation();
-  const {messages,loading} = useGetMessages();
-  console.log("messages:", messages);
+	const { messages, loading } = useGetMessages();
+	useListenMessages();
+	const lastMessageRef = useRef();
 
-  useEffect(()=> {
-    setTimeout(() => {
-      lastMessageRef.current?.scrollIntoView({behavior: "smooth"});
-    }, 100);
-  }, [messages])
-  return (
-    // Overflow auto prevents the screen from overflowing and instead includes a scroll tab
-    <div className='px-4 flex-1 overflow-auto'>   
-        {!loading && 
-         messages.length >0 && 
-         messages.map((message) => (
-          <div key={message._id}
-            ref={lastMessageRef}
-          >
-            <Message message={message} />
-          </div>
-        ))}
+	useEffect(() => {
+		setTimeout(() => {
+			lastMessageRef.current?.scrollIntoView({ behavior: "smooth" });
+		}, 100);
+	}, [messages]);
 
-        {loading && [...Array(5)].map((_,idx) => <MessageSkeleton key={idx} />)}
-        {!loading && messages.length === 0 && (
-          <p className='text-center text-black' > Start a message with {selectedConversation.fullName}  on Chattr</p>
-        )}
-    </div>
-  )
-}
+	return (
+		<div className='px-4 flex-1 overflow-auto'>
+			{!loading &&
+				messages.length > 0 &&
+				messages.map((message) => (
+					<div key={message._id} ref={lastMessageRef}>
+						<Message message={message} />
+					</div>
+				))}
 
-export default Messages
+			{loading && [...Array(3)].map((_, idx) => <MessageSkeleton key={idx} />)}
+			{!loading && messages.length === 0 && (
+				<p className='text-center text-black'>Send a message to start the conversation </p>
+			)}
+		</div>
+	);
+};
+export default Messages;
