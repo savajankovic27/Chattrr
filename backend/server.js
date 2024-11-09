@@ -6,8 +6,8 @@ import connectToMongoDB from "../db/connectToMongoDB.js";
 import authRoutes from "./routes/auth.routes.js";
 import userRoutes from "./routes/user.routes.js";
 import messageRoutes from "./routes/message.routes.js";
+import { app, server } from "./socket/socket.js";
 
-const app = express();
 const port = process.env.port || 5001;
 
 
@@ -26,7 +26,7 @@ app.use("/api/users", userRoutes);
 // })
 
 // to edit
-app.listen(5001, () => {
+server.listen(5001, () => {
     connectToMongoDB()
     console.log('Server Running on port 5001');
 });
